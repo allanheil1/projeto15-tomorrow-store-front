@@ -1,9 +1,14 @@
-import { } from './style';
+import { SignInPageStyle } from './style';
 
 export default function SignInPage() {
 
     return(
-        <h1>SignInPage</h1>
+        <>
+            <SignInPageStyle>
+                <h1>SignInPage</h1>
+            </SignInPageStyle>
+        </>
+
     )
 
 }

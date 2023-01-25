@@ -3,13 +3,13 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 
 * {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 }
 
 body{
-	
+	background-color: #FFFFFF;
 }
 
 html, body, div, span, applet, object, iframe,

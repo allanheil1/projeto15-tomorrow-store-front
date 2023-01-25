@@ -12,6 +12,7 @@ import OrdersPage from './pages/OrdersPage/OrdersPage';
 export default function App() {
 
   const [token, setToken] = useState(null);
+  const [userPhoto, setUserPhoto] = useState('');
   const [user, setUser] = useState(null);
 
   return (

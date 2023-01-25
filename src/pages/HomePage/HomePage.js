@@ -1,9 +1,20 @@
-import { } from './style';
+import { HomePageStyle } from './style';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
 export default function HomePage() {
 
     return(
-        <h1>HomePage</h1>
+        <>
+            <Header/>
+
+            <HomePageStyle>
+                <h1>HomePage</h1>
+            </HomePageStyle>
+
+            <Footer/>
+        </>
+
     )
 
 }
