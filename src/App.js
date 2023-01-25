@@ -1,36 +1,32 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import UserContext from './contexts/UserContext';
+import { Routes, Route } from "react-router-dom";
+import { UserContext } from "./contexts/UserContext";
+import { useContext } from "react";
 
-import GlobalStyle from './globalStyle/globalStyle';
-import SignInPage from './pages/AuthenticationPages/SignInPage';
-import SignUpPage from './pages/AuthenticationPages/SignUpPage';
-import HomePage from './pages/HomePage/HomePage';
-import CartPage from './pages/CartPage/CartPage';
-import OrdersPage from './pages/OrdersPage/OrdersPage';
+import GlobalStyle from "./globalStyle/globalStyle";
+import SignInPage from "./pages/AuthenticationPages/SignInPage";
+import SignUpPage from "./pages/AuthenticationPages/SignUpPage";
+import HomePage from "./pages/HomePage/HomePage";
+import CartPage from "./pages/CartPage/CartPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
 
 export default function App() {
+	const { visibleHeader } = useContext(UserContext);
 
-  const [token, setToken] = useState(null);
-  const [userPhoto, setUserPhoto] = useState('');
-  const [user, setUser] = useState(null);
-
-  return (
-    <>
-      <GlobalStyle />
-      <UserContext.Provider value={{ token, setToken, user, setUser }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<SignInPage />}/>
-            <Route path='/sign-up' element={<SignUpPage />}/>
-            <Route path='/home' element={<HomePage />}/>
-            <Route path='/cart' element={<CartPage />}/>
-            <Route path='/orders' element={<OrdersPage />}/>
-          </Routes>
-        </BrowserRouter>
-      </UserContext.Provider>
-    </>
-  );
+	return (
+		<>
+			<GlobalStyle />
+			{visibleHeader && <Header />}
+			<Routes>
+				<Route path="/" element={<SignInPage />} />
+				<Route path="/sign-up" element={<SignUpPage />} />
+				<Route path="/home" element={<HomePage />} />
+				<Route path="/cart" element={<CartPage />} />
+				<Route path="/orders" element={<OrdersPage />} />
+			</Routes>
+			{visibleHeader && <Footer />}
+		</>
+	);
 }
-
-

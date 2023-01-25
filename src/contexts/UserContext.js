@@ -1,5 +1,29 @@
-import { createContext } from "react"
+import { createContext, useState } from "react";
 
-const UserContext = createContext()
+export const UserContext = createContext();
 
-export default UserContext
+function UserProvider({ children }) {
+	const [token, setToken] = useState(null);
+	const [userPhoto, setUserPhoto] = useState("");
+	const [user, setUser] = useState(null);
+	const [visibleHeader, setVisibleHeader] = useState(false);
+
+	return (
+		<UserContext.Provider
+			value={{
+				token,
+				setToken,
+				userPhoto,
+				setUserPhoto,
+				user,
+				setUser,
+				visibleHeader,
+				setVisibleHeader,
+			}}
+		>
+			{children}
+		</UserContext.Provider>
+	);
+}
+
+export default UserProvider;

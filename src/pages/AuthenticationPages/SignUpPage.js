@@ -1,12 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 
 import Logo from '../../assets/logo.jpeg';
 import { AuthenticationPageStyle, Message, Form } from './style'
 
 export default function SignUpPage() {
-
+    const { setVisibleHeader } = useContext(UserContext);
     const navigate = useNavigate();
     const [signUpData, setSignUpData] = useState({
       email: '',
@@ -15,6 +16,11 @@ export default function SignUpPage() {
       password: ''
     });
     const [isLoading, setIsLoading] = useState(false);
+    
+    useEffect(()=>{
+      setVisibleHeader(false);
+      // eslint-disable-next-line
+    },[]);
 
     function SignUpRequest(e){
       e.preventDefault();
