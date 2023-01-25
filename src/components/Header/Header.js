@@ -24,7 +24,7 @@ export default function Header(){
             </LogoStyle>
 
             <LogOutStyle>
-                <Link to='/sign-in'>
+                <Link to='/'>
                     <FiLogOut size={25} /> 
                 </Link>
             </LogOutStyle>
