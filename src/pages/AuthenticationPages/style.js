@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const SignInPageStyle = styled.div`
+export const AuthenticationPageStyle = styled.div`
   width: 100%;
   height: 100vh;
-  display:flex;
+	display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,7 @@ export const SignInPageStyle = styled.div`
       font-size: 20px;
       text-decoration: none;
     }
+
   }
 
   button{
@@ -46,14 +47,13 @@ export const SignInPageStyle = styled.div`
     text-align: center;
     margin-bottom: 25px;
     background-color: #B1B1B1;
-    cursor: pointer;
   }
   button:disabled{
-      opacity: 0.75;
+    opacity: 0.75;
   }
 `
 
-export const Cadastre = styled.div`
+export const Message = styled.div`
   font-family: 'Orbitron', sans-serif;
   color: #B1B1B1;
   font-size: 15px;
@@ -67,3 +67,4 @@ export const Form = styled.form`
   justify-content: center;
   margin: 30px 0 25px;
 `
+

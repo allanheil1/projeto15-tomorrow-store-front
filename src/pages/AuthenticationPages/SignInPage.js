@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 
 import Logo from '../../assets/logo.jpeg';
-import { SignInPageStyle, Cadastre, Form } from './style';
+import { AuthenticationPageStyle, Message, Form } from './style';
 import UserContext from '../../contexts/UserContext';
 
 export default function SignInPage() {
@@ -12,15 +12,15 @@ export default function SignInPage() {
     const { setToken } = useContext(UserContext);
     const { setUserPhoto } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [loginData, setLoginData] = useState({
+    const [signInData, setSignInData] = useState({
       email: '',
       password: ''
     });
 
-    function LoginRequest(e){
+    function SignInRequest(e){
         e.preventDefault();
         setIsLoading(true);
-        const promise = axios.post('LOGIN URL BACKEND', loginData);
+        const promise = axios.post('SIGN UP URL BACKEND', signInData);
         promise.then((res) => {
           setIsLoading(false);
 
@@ -38,36 +38,36 @@ export default function SignInPage() {
     }
 
     function OnChange(e) {
-        setLoginData({ ...loginData, [e.target.name]: e.target.value });
+      setSignInData({ ...signInData, [e.target.name]: e.target.value });
     }
 
     return (
 
-        <SignInPageStyle>
+        <AuthenticationPageStyle>
           <img src={Logo}/>
   
-          <Form onSubmit={LoginRequest}>
+          <Form onSubmit={SignInRequest}>
             <input 
               type='email' placeholder='email'
-              value={loginData.email} name='email'
+              value={signInData.email} name='email'
               onChange={OnChange} required disabled={isLoading}
             />
             <input 
-              type='password' placeholder='senha'
-              value={loginData.password} name='password'
+              type='password' placeholder='password'
+              value={signInData.password} name='password'
               onChange={OnChange} required disabled={isLoading}
             />
             <button type='submit' disabled={isLoading}>
-                Login
+                Sign-In
             </button>
           </Form>
   
           <Link to={isLoading ? '' : '/sign-up'}>
-            <Cadastre>
-              Ainda sem conta? Faça seu cadastro!
-            </Cadastre>
+            <Message>
+              Don't have an account? Sign-Up!
+            </Message>
           </Link>
-        </SignInPageStyle>
+        </AuthenticationPageStyle>
     );
 
 }
