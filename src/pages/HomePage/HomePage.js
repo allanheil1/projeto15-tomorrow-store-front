@@ -4,9 +4,11 @@ import { UserContext } from "../../contexts/UserContext";
 import Product from "../../components/Product/Product";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
 export default function HomePage() {
 	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const { setVisibleHeader } = useContext(UserContext);
 	const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ export default function HomePage() {
 			try {
 				const response = await axios.get("/products");
 				setProducts(response.data);
+				setLoading(false);
 			} catch (e) {
 				alert("Erro ao carregar produtos");
 				navigate("/");
@@ -24,6 +27,11 @@ export default function HomePage() {
 		getProducts();
 		// eslint-disable-next-line
 	}, []);
+
+	if (loading) {
+		return <Loading />;
+	}
+
 	return (
 		<HomePageStyle>
 			<h1>Products</h1>
