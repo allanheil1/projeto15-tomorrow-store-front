@@ -18,8 +18,8 @@ export default function SignUpPage() {
     const [isLoading, setIsLoading] = useState(false);
     
     useEffect(()=>{
-      setVisibleHeader(false);
-      // eslint-disable-next-line
+        setVisibleHeader(false);
+        // eslint-disable-next-line
     },[]);
 
     function SignUpRequest(e){

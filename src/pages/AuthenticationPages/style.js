@@ -10,7 +10,7 @@ export const AuthenticationPageStyle = styled.div`
   background-color: #020e27;
   img{
     height: 200px;
-    margin-bottom: 32px;
+    margin-bottom: -40px;
   }
 
   input{

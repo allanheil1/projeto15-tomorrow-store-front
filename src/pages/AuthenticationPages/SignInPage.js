@@ -14,10 +14,11 @@ export default function SignInPage() {
 		email: "",
 		password: "",
 	});
-  useEffect(()=>{
-    setVisibleHeader(false);
-    // eslint-disable-next-line
-  },[]);
+
+	useEffect(()=>{
+		setVisibleHeader(false);
+		// eslint-disable-next-line
+	},[]);
 
 	function SignInRequest(e) {
 		e.preventDefault();
