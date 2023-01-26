@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import Logo from "../../assets/logo.jpeg";
+import Logo from '../../assets/storelogo.png';
 import { AuthenticationPageStyle, Message, Form } from "./style";
 import { UserContext } from "../../contexts/UserContext";
 
