@@ -1,20 +1,19 @@
-import { HomePageStyle } from './style';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import { HomePageStyle } from "./style";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+
 
 export default function HomePage() {
-
-    return(
-        <>
-            <Header/>
-
-            <HomePageStyle>
-                <h1>HomePage</h1>
-            </HomePageStyle>
-
-            <Footer/>
-        </>
-
-    )
-
+    const { setVisibleHeader } = useContext(UserContext);
+    useEffect(() => {
+        setVisibleHeader(true);
+        // eslint-disable-next-line
+    }, []);
+	return (
+		<HomePageStyle>
+			<h1>HomePage</h1>
+		</HomePageStyle>
+	);
 }
