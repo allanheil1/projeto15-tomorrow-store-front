@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
-import Logo from '../../assets/logo.jpeg';
+import Logo from '../../assets/storelogo.png';
 import { AuthenticationPageStyle, Message, Form } from './style'
 
 export default function SignUpPage() {
@@ -65,7 +65,7 @@ export default function SignUpPage() {
             disabled={isLoading}
           />
           <input 
-            type='text' placeholder='photo'
+            type='text' placeholder='photo URL'
             value={signUpData.photo} name='photo'
             onChange={OnChange} required
             disabled={isLoading}

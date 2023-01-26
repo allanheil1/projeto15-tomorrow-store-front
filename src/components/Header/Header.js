@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FiLogOut } from 'react-icons/fi';
+import { HiOutlineLogout } from 'react-icons/hi';
 
 import { } from './style';
-import Logo from '../../assets/logo.jpeg';
+import Logo from '../../assets/logo.png';
 import { HeaderStyle, LogOutStyle, LogoStyle, PhotoStyle } from './style.js';
 import UserContext from '../../contexts/UserContext';
 
@@ -25,7 +25,7 @@ export default function Header(){
 
             <LogOutStyle>
                 <Link to='/'>
-                    <FiLogOut size={25} /> 
+                    <HiOutlineLogout size={30} /> 
                 </Link>
             </LogOutStyle>
 

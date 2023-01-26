@@ -10,7 +10,7 @@ export const HeaderStyle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #B1B1B1;
+    background-color: #020e27;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 `
 
@@ -25,8 +25,8 @@ export const PhotoStyle = styled.div`
 
 export const LogoStyle = styled.div`
     img{
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
     }
 `
 

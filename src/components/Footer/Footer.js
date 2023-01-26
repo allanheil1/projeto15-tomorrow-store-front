@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { BsCart2 } from 'react-icons/bs'; 
+import { HiOutlineHome, HiOutlineShoppingCart, HiOutlineClipboardList } from 'react-icons/hi'
 
 import UserContext from '../../contexts/UserContext';
 
@@ -13,15 +14,15 @@ export default function Footer(){
         <FooterStyle>
 
                 <Link to='/home'>
-                    Home
+                    <HiOutlineHome size={40}/>
                 </Link>
 
                 <Link to='/cart'>
-                    <BsCart2 size={40}/>
+                    <HiOutlineShoppingCart size={40}/>
                 </Link>
 
                 <Link to='/orders'>
-                    Orders
+                    <HiOutlineClipboardList size={40}/>
                 </Link>
             
         </FooterStyle>

@@ -9,10 +9,9 @@ export const FooterStyle = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    background-color: #B1B1B1;
+    box-shadow: 0px 4px 4px rgba(0.2, 0, 0, 0.15);
+    background-color: #020e27;
     color: #FFFFFF;
-    font-family: 'Orbitron', sans-serif;
     font-size: 18px;
     height: 70px;
     font-weight: 400;
