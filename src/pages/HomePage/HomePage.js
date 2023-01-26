@@ -1,45 +1,39 @@
 import { HomePageStyle, ProductContainer } from "./style";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Product from "../../components/Product/Product";
-
-const MOCKDATA = [
-	{
-		id: 1,
-		name: "Produto 1",
-		price: 10,
-		image: "https://picsum.photos/200/300",
-	},
-	{
-		id: 2,
-		name: "Produto 2",
-		price: 20,
-		image: "https://picsum.photos/200/300",
-	},
-	{
-		id: 3,
-		name: "Produto 3",
-		price: 30,
-		image: "https://picsum.photos/200/300",
-	},
-];
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+	const [products, setProducts] = useState([]);
 	const { setVisibleHeader } = useContext(UserContext);
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		setVisibleHeader(true);
+		async function getProducts() {
+			try {
+				const response = await axios.get("/products");
+				setProducts(response.data);
+			} catch (e) {
+				alert("Erro ao carregar produtos");
+				navigate("/");
+			}
+		}
+		getProducts();
 		// eslint-disable-next-line
 	}, []);
 	return (
 		<HomePageStyle>
 			<h1>Products</h1>
 			<ProductContainer>
-				{MOCKDATA.map((product) => (
+				{products.map((product) => (
 					<Product
 						name={product.name}
 						price={product.price}
 						image={product.image}
-						key={product.id}
+						key={product._id}
 					/>
 				))}
 			</ProductContainer>
