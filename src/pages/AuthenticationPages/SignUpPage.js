@@ -12,7 +12,7 @@ export default function SignUpPage() {
     const [signUpData, setSignUpData] = useState({
       email: '',
       name: '',
-      photo: '',
+      photoURL: '',
       password: ''
     });
     const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,8 @@ export default function SignUpPage() {
     function SignUpRequest(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up', { ...signUpData });
+      console.log(signUpData);
+      const promise = axios.post(process.env.REACT_APP_SIGNUP_URL , signUpData);
       promise.then(() => {
         setIsLoading(false);
         navigate('/');
@@ -66,7 +67,7 @@ export default function SignUpPage() {
           />
           <input 
             type='text' placeholder='photo URL'
-            value={signUpData.photo} name='photo'
+            value={signUpData.photoURL} name='photoURL'
             onChange={OnChange} required
             disabled={isLoading}
           />

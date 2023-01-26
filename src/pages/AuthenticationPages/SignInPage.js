@@ -11,8 +11,8 @@ export default function SignInPage() {
 	const { setToken, setUserPhoto, setVisibleHeader } = useContext(UserContext);
 	const [isLoading, setIsLoading] = useState(false);
 	const [signInData, setSignInData] = useState({
-		email: "",
-		password: "",
+		email: '',
+		password: '',
 	});
 
 	useEffect(()=>{
@@ -23,13 +23,11 @@ export default function SignInPage() {
 	function SignInRequest(e) {
 		e.preventDefault();
 		setIsLoading(true);
-		const promise = axios.post("SIGN UP URL BACKEND", signInData);
+		const promise = axios.post(process.env.REACT_APP_SIGNIN_URL, signInData);
 		promise.then((res) => {
 			setIsLoading(false);
-
-			//SET VARIABLES FROM SERVER RESPONSE
-			//setToken(res.data.token);
-			//setUserPhoto(res.data.image);
+			setToken(res.data.token);
+			setUserPhoto(res.data.user.photoURL);
 
 			navigate("/home");
 		});
