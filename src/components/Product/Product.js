@@ -1,13 +1,15 @@
 import { ProductInfo, ProductStyle } from "./style";
 
-function Product({ name, price, image }) {
+function Product({ product }) {
+	
+
 	return (
 		<ProductStyle>
-			<img src={image} />
+			<img src={product.image} />
 			<ProductInfo>
-				<h1>{name}</h1>
+				<h1>{product.name}</h1>
 				<div>
-					<p>$ {price}</p>
+					<p>$ {product.price}</p>
 					<button>Buy</button>
 				</div>
 			</ProductInfo>

@@ -38,9 +38,7 @@ export default function HomePage() {
 			<ProductContainer>
 				{products.map((product) => (
 					<Product
-						name={product.name}
-						price={product.price}
-						image={product.image}
+						product = {product}
 						key={product._id}
 					/>
 				))}
