@@ -10,23 +10,25 @@ import CartPage from "./pages/CartPage/CartPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
+import OrderProvider from "./contexts/OrderContext";
 
 export default function App() {
 	const { visibleHeader } = useContext(UserContext);
 
 	return (
 		<>
-			<GlobalStyle />
-			{visibleHeader && <Header />}
-			<Routes>
-				<Route path="/" element={<SignInPage />} />
-				<Route path="/sign-up" element={<SignUpPage />} />
-				<Route path="/home" element={<HomePage />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/orders" element={<OrdersPage />} />
-			</Routes>
-			{visibleHeader && <Footer />}
+			<OrderProvider>
+				<GlobalStyle />
+				{visibleHeader && <Header />}
+				<Routes>
+					<Route path="/" element={<SignInPage />} />
+					<Route path="/sign-up" element={<SignUpPage />} />
+					<Route path="/home" element={<HomePage />} />
+					<Route path="/cart" element={<CartPage />} />
+					<Route path="/orders" element={<OrdersPage />} />
+				</Routes>
+				{visibleHeader && <Footer />}
+			</OrderProvider>
 		</>
 	);
 }
