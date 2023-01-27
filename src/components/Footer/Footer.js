@@ -1,32 +1,34 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { BsCart2 } from 'react-icons/bs'; 
-import { HiOutlineHome, HiOutlineShoppingCart, HiOutlineClipboardList } from 'react-icons/hi'
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { BsCart2 } from "react-icons/bs";
+import {
+	HiOutlineHome,
+	HiOutlineShoppingCart,
+	HiOutlineClipboardList,
+} from "react-icons/hi";
 
-import UserContext from '../../contexts/UserContext';
+import { FooterStyle } from "./style";
+import { OrderContext } from "../../contexts/OrderContext.js";
+import { Badge } from "@mui/material";
 
-import { FooterStyle } from './style';
+export default function Footer() {
+	const { shoppingCart } = useContext(OrderContext);
 
-export default function Footer(){
+	return (
+		<FooterStyle>
+			<Link to="/home">
+				<HiOutlineHome size={40} />
+			</Link>
 
-    return(
+			<Link to="/cart">
+				<Badge badgeContent={shoppingCart} color="primary">
+					<HiOutlineShoppingCart size={40} />
+				</Badge>
+			</Link>
 
-        <FooterStyle>
-
-                <Link to='/home'>
-                    <HiOutlineHome size={40}/>
-                </Link>
-
-                <Link to='/cart'>
-                    <HiOutlineShoppingCart size={40}/>
-                </Link>
-
-                <Link to='/orders'>
-                    <HiOutlineClipboardList size={40}/>
-                </Link>
-            
-        </FooterStyle>
-
-    )
-
+			<Link to="/orders">
+				<HiOutlineClipboardList size={40} />
+			</Link>
+		</FooterStyle>
+	);
 }
