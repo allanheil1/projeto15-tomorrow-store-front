@@ -42,5 +42,8 @@ export const ProductInfo = styled.div`
 		font-size: 15px;
 		color: #fff;
         background: linear-gradient(180deg, #79e499 0%, #0dcdf4 100%);
+		&.remove{
+			opacity: 0.5;
+		}
 	}
 `;
