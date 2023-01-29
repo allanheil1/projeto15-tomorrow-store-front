@@ -1,17 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { OrderContext } from "../../contexts/OrderContext";
+import { UserContext } from "../../contexts/UserContext";
+import Loading from "../../components/Loading/Loading";
+import axios from "axios";
+import dayjs from "dayjs";
 import {
 	CheckoutContainer,
 	Method,
 	MethodContainer,
 	PaymentContainer,
 } from "./style";
+import crypto from "../../assets/crypto.png";
+import card from "../../assets/card.png";
 
 function Checkout() {
 	const [animation, setAnimation] = useState(false);
 	const [selectedMethod, setSelectedMethod] = useState("");
-	const { cartList } = useContext(OrderContext);
+	const [loading, setLoading] = useState(false);
+	const { cartList, setCartList } = useContext(OrderContext);
+	const { token } = useContext(UserContext);
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (cartList.length !== 0) {
@@ -29,6 +37,41 @@ function Checkout() {
 		setSelectedMethod(e.target.name);
 	}
 
+	async function handleCheckout() {
+		if (selectedMethod === "") {
+			alert("Please select a payment method!");
+			return;
+		}
+		const itemList = cartList.map((item) => ({
+			name: item.name,
+			price: item.price,
+		}));
+		const order = {
+			date: dayjs().format("MM/DD/YY"),
+			paymethod: selectedMethod,
+			itemsList: itemList,
+		};
+		const config = {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		};
+		try {
+			await axios.post(
+				process.env.REACT_APP_POST_ORDER,
+				order,
+				config
+			);
+			setCartList([]);
+			navigate('/success');
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	if (loading){
+		return <Loading />
+	}
+
 	return (
 		<CheckoutContainer animation={animation}>
 			<h1>Choose your payment method</h1>
@@ -38,10 +81,7 @@ function Checkout() {
 					selection={selectedMethod}
 					onClick={handleSelection}
 				>
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/4341/4341764.png"
-						alt="Credit Card"
-					/>
+					<img src={card} alt="Credit Card" />
 					<h2>Credit Card</h2>
 				</Method>
 				<Method
@@ -49,10 +89,7 @@ function Checkout() {
 					selection={selectedMethod}
 					onClick={handleSelection}
 				>
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/4341/4341764.png"
-						alt="Debit Card"
-					/>
+					<img src={card} alt="Debit Card" />
 					<h2>Debit Card</h2>
 				</Method>
 				<Method
@@ -60,10 +97,7 @@ function Checkout() {
 					selection={selectedMethod}
 					onClick={handleSelection}
 				>
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/1213/1213709.png"
-						alt="Crypto"
-					/>
+					<img src={crypto} alt="Crypto" />
 					<h2>Crypto</h2>
 				</Method>
 			</MethodContainer>
@@ -74,7 +108,14 @@ function Checkout() {
 						{cartList.reduce((acc, item) => acc + item.price, 0)}
 					</p>
 				</div>
-				<button>Checkout</button>
+				<button
+					onClick={async () => {
+						setLoading(true);
+						await handleCheckout();
+					}}
+				>
+					Checkout
+				</button>
 			</PaymentContainer>
 		</CheckoutContainer>
 	);

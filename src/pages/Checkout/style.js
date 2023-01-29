@@ -9,7 +9,7 @@ export const CheckoutContainer = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	transform: ${(props) =>
-		props.animation ? "translateX(0)" : "translateX(100%)"};
+		props.animation ? "translateX(0%)" : "translateX(100%)"};
 	transition: transform 0.5s ease-in-out;
 	> h1 {
 		font-size: 2rem;
