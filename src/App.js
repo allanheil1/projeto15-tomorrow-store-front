@@ -11,6 +11,7 @@ import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import OrderProvider from "./contexts/OrderContext";
+import Checkout from "./pages/Checkout/Checkout";
 
 export default function App() {
 	const { visibleHeader } = useContext(UserContext);
@@ -26,6 +27,7 @@ export default function App() {
 					<Route path="/home" element={<HomePage />} />
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/orders" element={<OrdersPage />} />
+					<Route path="/checkout" element={<Checkout />} />
 				</Routes>
 				{visibleHeader && <Footer />}
 			</OrderProvider>
