@@ -12,6 +12,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import OrderProvider from "./contexts/OrderContext";
 import Checkout from "./pages/Checkout/Checkout";
+import Success from "./pages/SuccessOrder/Success";
 
 export default function App() {
 	const { visibleHeader, userPhoto } = useContext(UserContext);
@@ -28,6 +29,7 @@ export default function App() {
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/orders" element={<OrdersPage />} />
 					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/success" element={<Success />} />
 				</Routes>
 				{visibleHeader && <Footer />}
 			</OrderProvider>
