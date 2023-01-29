@@ -8,12 +8,14 @@ export const CartContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    transform: ${(props) => (props.next ? "translateX(-100%)" : "translateX(0)")};
+    transition: transform 0.5s ease-in-out;
     > div{
         width: 100%;
     }
 `;
 
-export const CheckoutContainer = styled.div`
+export const PaymentContainer = styled.div`
     padding: 20px;
     width: 100%;
     display: flex;

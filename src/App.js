@@ -11,22 +11,25 @@ import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import OrderProvider from "./contexts/OrderContext";
+import Checkout from "./pages/Checkout/Checkout";
+import Success from "./pages/SuccessOrder/Success";
 
 export default function App() {
-	
-	const { visibleHeader } = useContext(UserContext);
+	const { visibleHeader, userPhoto } = useContext(UserContext);
 
 	return (
 		<>
 			<OrderProvider>
 				<GlobalStyle />
-				{visibleHeader && <Header />}
+				{visibleHeader && <Header userPhoto={userPhoto}/>}
 				<Routes>
 					<Route path="/" element={<SignInPage />} />
 					<Route path="/sign-up" element={<SignUpPage />} />
 					<Route path="/home" element={<HomePage />} />
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/orders" element={<OrdersPage />} />
+					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/success" element={<Success />} />
 				</Routes>
 				{visibleHeader && <Footer />}
 			</OrderProvider>
