@@ -1,31 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../../contexts/OrderContext";
-import { CartContainer, CheckoutContainer, HeaderContainer } from "./style";
+import { CartContainer, PaymentContainer, HeaderContainer } from "./style";
 import CartItem from "../../components/CartItem/CartItem";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
 	const { cartList } = useContext(OrderContext);
+	const [nextPage, setNextPage] = useState(false);
+	const navigate = useNavigate();
+	function handleSubmit() {
+		setNextPage(true);
+		setTimeout(navigate, 500, "/checkout");
+	}
 
 	return (
-		<CartContainer>
+		<CartContainer next={nextPage}>
 			<div>
-                <HeaderContainer>
-                    <h1>Item</h1>
-                    <h1>Price</h1>
-                </HeaderContainer>
+				<HeaderContainer>
+					<h1>Item</h1>
+					<h1>Price</h1>
+				</HeaderContainer>
 				{cartList.map((item) => (
 					<CartItem key={item._id} item={item} />
 				))}
 			</div>
-			<CheckoutContainer>
+			<PaymentContainer>
 				<div>
 					<p>
 						Subtotal: ${" "}
 						{cartList.reduce((acc, item) => acc + item.price, 0)}
 					</p>
 				</div>
-				<button>Checkout</button>
-			</CheckoutContainer>
+				<button onClick={handleSubmit}>Proceed to Payment</button>
+			</PaymentContainer>
 		</CartContainer>
 	);
 }
