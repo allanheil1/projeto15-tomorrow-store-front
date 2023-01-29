@@ -14,13 +14,13 @@ import OrderProvider from "./contexts/OrderContext";
 import Checkout from "./pages/Checkout/Checkout";
 
 export default function App() {
-	const { visibleHeader } = useContext(UserContext);
+	const { visibleHeader, userPhoto } = useContext(UserContext);
 
 	return (
 		<>
 			<OrderProvider>
 				<GlobalStyle />
-				{visibleHeader && <Header />}
+				{visibleHeader && <Header userPhoto={userPhoto}/>}
 				<Routes>
 					<Route path="/" element={<SignInPage />} />
 					<Route path="/sign-up" element={<SignUpPage />} />
