@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import OrderProvider from "./contexts/OrderContext";
 
 export default function App() {
+	
 	const { visibleHeader } = useContext(UserContext);
 
 	return (

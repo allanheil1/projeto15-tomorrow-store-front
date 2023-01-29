@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import { OrderContext } from "../../contexts/OrderContext";
+import { UserContext } from "../../contexts/UserContext";
 import { CartContainer, CheckoutContainer, HeaderContainer } from "./style";
 import CartItem from "../../components/CartItem/CartItem";
 
 export default function CartPage() {
+
 	const { cartList } = useContext(OrderContext);
+	const { setVisibleHeader } = useContext(UserContext);
+	setVisibleHeader(true);
 
 	return (
 		<CartContainer>
