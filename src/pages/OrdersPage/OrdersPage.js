@@ -10,9 +10,9 @@ export default function OrdersPage() {
     const { setVisibleHeader, token } = useContext(UserContext);
     const { ordersList, setOrdersList } = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-	setVisibleHeader(true);
 
     useEffect(() => {
+        setVisibleHeader(true);
         loadOrders();
       }, []);
 
