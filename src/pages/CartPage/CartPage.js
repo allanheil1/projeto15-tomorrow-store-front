@@ -1,17 +1,21 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../../contexts/OrderContext";
 import { CartContainer, PaymentContainer, HeaderContainer } from "./style";
+
 import CartItem from "../../components/CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
+
 	const { cartList } = useContext(OrderContext);
+
 	const [nextPage, setNextPage] = useState(false);
 	const navigate = useNavigate();
 	function handleSubmit() {
 		setNextPage(true);
 		setTimeout(navigate, 500, "/checkout");
 	}
+
 
 	return (
 		<CartContainer next={nextPage}>
