@@ -49,7 +49,7 @@ function Checkout() {
 		}));
 		const order = {
 			date: dayjs().format("MM/DD/YY"),
-			paymethod: selectedMethod,
+			payMethod: selectedMethod,
 			totalPrice: totalPrice,
 			itemsList: itemList,
 		};
