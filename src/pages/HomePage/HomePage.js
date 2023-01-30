@@ -9,10 +9,11 @@ import Loading from "../../components/Loading/Loading";
 export default function HomePage() {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const { setVisibleHeader } = useContext(UserContext);
+	const { setVisibleHeader, checkLogin } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		checkLogin();
 		setVisibleHeader(true);
 		async function getProducts() {
 			try {

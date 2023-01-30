@@ -6,7 +6,7 @@ export default function Order({orderId, date, paymethod, totalPrice, itemsList})
         <OrderStyle>
 
             <HeaderOrder>
-                <h1><span>Order number:</span> {orderId}</h1>
+                <h1><span>Order #</span>{orderId}</h1>
                 <h2><span>Date:</span>  {date}</h2>
                 <h3><span>Price:</span>  ${totalPrice.toFixed(2)}</h3>
                 <h4><span>Payment method:</span>  {paymethod}</h4>

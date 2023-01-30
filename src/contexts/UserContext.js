@@ -7,6 +7,12 @@ function UserProvider({ children }) {
 	const [userPhoto, setUserPhoto] = useState("");
 	const [user, setUser] = useState(null);
 	const [visibleHeader, setVisibleHeader] = useState(false);
+	function checkLogin(){
+		if(!token){
+			alert("You need to be logged in to access this page");
+			window.location.href = "/"
+		}
+	}
 
 	return (
 		<UserContext.Provider
@@ -19,6 +25,7 @@ function UserProvider({ children }) {
 				setUser,
 				visibleHeader,
 				setVisibleHeader,
+				checkLogin
 			}}
 		>
 			{children}

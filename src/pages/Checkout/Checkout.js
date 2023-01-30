@@ -19,10 +19,11 @@ function Checkout() {
 	const [selectedMethod, setSelectedMethod] = useState("");
 	const [loading, setLoading] = useState(false);
 	const { cartList, setCartList } = useContext(OrderContext);
-	const { token } = useContext(UserContext);
+	const { token, checkLogin } = useContext(UserContext);
 	const navigate = useNavigate();
 	const totalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
 	useEffect(() => {
+		checkLogin();
 		if (cartList.length !== 0) {
 			setTimeout(setAnimation, 100, true);
 		} else {
