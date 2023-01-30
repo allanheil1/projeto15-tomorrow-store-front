@@ -21,6 +21,7 @@ function Checkout() {
 	const { cartList, setCartList } = useContext(OrderContext);
 	const { token } = useContext(UserContext);
 	const navigate = useNavigate();
+	const totalPrice = cartList.reduce((acc, item) => acc + item.price, 0);
 	useEffect(() => {
 		if (cartList.length !== 0) {
 			setTimeout(setAnimation, 100, true);
@@ -49,6 +50,7 @@ function Checkout() {
 		const order = {
 			date: dayjs().format("MM/DD/YY"),
 			paymethod: selectedMethod,
+			totalPrice: totalPrice,
 			itemsList: itemList,
 		};
 		const config = {
@@ -105,7 +107,7 @@ function Checkout() {
 				<div>
 					<p>
 						Subtotal: ${" "}
-						{cartList.reduce((acc, item) => acc + item.price, 0)}
+						{totalPrice}
 					</p>
 				</div>
 				<button
