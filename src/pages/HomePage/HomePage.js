@@ -16,7 +16,7 @@ export default function HomePage() {
 		setVisibleHeader(true);
 		async function getProducts() {
 			try {
-				const response = await axios.get("/products");
+				const response = await axios.get(process.env.REACT_APP_PRODUCTS_URL);
 				setProducts(response.data);
 				setLoading(false);
 			} catch (e) {
