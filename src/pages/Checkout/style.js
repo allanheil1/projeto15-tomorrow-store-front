@@ -8,9 +8,10 @@ export const CheckoutContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
-	transform: ${(props) =>
+	//Commented due to unknown bug
+	/* transform: ${(props) =>  
 		props.animation ? "translateX(0%)" : "translateX(100%)"};
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.5s ease-in-out; */
 	> h1 {
 		font-size: 2rem;
 		font-weight: 600;

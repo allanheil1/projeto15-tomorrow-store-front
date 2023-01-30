@@ -67,3 +67,22 @@ export const HeaderContainer = styled.div`
         grid-area: price;
     }
 `;
+
+export const EmptyCart = styled.div`
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	> h1 {
+		font-size: 2rem;
+		font-weight: 600;
+        margin-bottom: 100px;
+	}
+	> h2{
+		font-size: 1.2rem;
+		font-weight: 500;
+        text-align: center;
+	}
+`;

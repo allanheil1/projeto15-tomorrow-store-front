@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../../contexts/OrderContext";
-import { CartContainer, PaymentContainer, HeaderContainer } from "./style";
+import { CartContainer, PaymentContainer, HeaderContainer, EmptyCart } from "./style";
 
 import CartItem from "../../components/CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,14 @@ export default function CartPage() {
 		setTimeout(navigate, 500, "/checkout");
 	}
 
+	if(cartList.length === 0){
+		return (
+			<EmptyCart>
+				<h1>Your cart is empty!</h1>
+				<h2>Please add some items to your cart before proceeding to checkout.</h2>
+			</EmptyCart>
+		)
+	}
 
 	return (
 		<CartContainer next={nextPage}>
